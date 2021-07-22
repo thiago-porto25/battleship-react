@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NewGamePage from './containers/NewGamePage'
+import InitialPage from './containers/InitialPage'
 import PreparingGame from './containers/PreparingGame'
 import MainGame from './containers/MainGame'
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       {isInitial && (
-        <NewGamePage
+        <InitialPage
           setIsInitial={setIsInitial}
           setIsPreparing={setIsPreparing}
         />
