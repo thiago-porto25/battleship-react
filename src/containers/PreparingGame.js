@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Square from '../components/Square'
 
+// pesquisar como fazer aquilo de clicar em algo e essa coisa seguir o mouse e fazer o hover em uma coisa e outras tambem mudar
+
 export default function PreparingGame({
   setIsPreparing,
   setIsMainGame,
