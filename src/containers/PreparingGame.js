@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Square from '../components/Square'
 
 // pesquisar como fazer aquilo de clicar em algo e essa coisa seguir o mouse e fazer o hover em uma coisa e outras tambem mudar
+//////////////USE CSS IN REACT FOR STYLES THAT NEED VARIABLES
 
 export default function PreparingGame({
   setIsPreparing,
@@ -28,15 +29,23 @@ export default function PreparingGame({
       <p>Hi</p>
       <div className="prep-board-and-ships">
         <div className="prep-board-container">
-          {board.map((item, i) => (
-            <Square
-              key={`${item}-${i}`}
-              boardId={i}
-              onClick={({ target }) => handlePrepClick(target)}
-            />
-          ))}
+          <div className="prep-board">
+            {board.map((item, i) => (
+              <Square
+                key={`${item}-${i}`}
+                boardId={i}
+                //onClick={({ target }) => handlePrepClick(target)}
+              />
+            ))}
+          </div>
         </div>
-        <div className="prep-ships-container"></div>
+        <div className="prep-ships-container">
+          <button>Carrier</button>
+          <button>Battleship</button>
+          <button>Warship</button>
+          <button>Submarine</button>
+          <button>Patrol Boat</button>
+        </div>
       </div>
       <button disabled={!allPrepared} onClick={handleStartGame}>
         Start Game

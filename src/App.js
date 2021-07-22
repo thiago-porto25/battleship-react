@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import InitialPage from './containers/InitialPage'
 import PreparingGame from './containers/PreparingGame'
 import MainGame from './containers/MainGame'
-import { createBoard } from './utils/createBoard'
+import { createBoard, selectRandomBoard } from './utils/createBoard'
 
 function App() {
   const [isInitial, setIsInitial] = useState(true)
   const [isPreparing, setIsPreparing] = useState(false)
   const [isMainGame, setIsMainGame] = useState(false)
 
-  const [humanBoard, setHumanBoard] = useState(createBoard('human'))
-  const [AIBoard, setAIBoard] = useState(createBoard('AI'))
+  const [humanBoard, setHumanBoard] = useState(createBoard())
+  const [AIBoard, setAIBoard] = useState(selectRandomBoard())
   return (
     <div className="App">
       {isInitial && (
