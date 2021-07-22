@@ -1,3 +1,35 @@
+body {
+  background-color: rgb(226, 231, 241);
+  height: 100vh;
+  margin: 0;
+}
+
+#root {
+  height: inherit;
+}
+
+/*////////////////////Initial Game Page////////////////////*/
+.init-container {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.init-container h1 {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 60px;
+}
+
+
+
+
+
+
+/*/ ///////////////////Preparing Game Page////////////////////*/
 .prep-board-and-ships {
   margin: auto;
   display: flex;

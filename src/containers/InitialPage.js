@@ -8,9 +8,7 @@ export default function InitialPage({ setIsInitial, setIsPreparing }) {
 
   return (
     <div className="init-container">
-      <header>
-        <h1 className="logo lg">BATTLESHIP</h1>
-      </header>
+      <h1 className="logo lg">BATTLESHIP</h1>
       <button onClick={handleClick}>New Game</button>
     </div>
   )

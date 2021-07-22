@@ -5,6 +5,8 @@ export default function MainGame({
   setHumanBoard,
   AIBoard,
   setAIBoard,
+  setIsPreparing,
+  setIsMainGame,
 }) {
   const [isWinner, setIsWinner] = useState(false)
 

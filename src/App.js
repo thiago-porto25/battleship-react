@@ -12,7 +12,7 @@ function App() {
   const [humanBoard, setHumanBoard] = useState(createBoard())
   const [AIBoard, setAIBoard] = useState(selectRandomBoard())
   return (
-    <div className="App">
+    <>
       {isInitial && (
         <InitialPage
           setIsInitial={setIsInitial}
@@ -33,9 +33,11 @@ function App() {
           setHumanBoard={setHumanBoard}
           AIBoard={AIBoard}
           setAIBoard={setAIBoard}
+          setIsPreparing={setIsPreparing}
+          setIsMainGame={setIsMainGame}
         />
       )}
-    </div>
+    </>
   )
 }
 
