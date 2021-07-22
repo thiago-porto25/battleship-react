@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import InitialPage from './containers/InitialPage'
 import PreparingGame from './containers/PreparingGame'
 import MainGame from './containers/MainGame'
+import { createBoard } from './utils/createBoard'
 
 function App() {
   const [isInitial, setIsInitial] = useState(true)
   const [isPreparing, setIsPreparing] = useState(false)
   const [isMainGame, setIsMainGame] = useState(false)
+
+  const [humanBoard, setHumanBoard] = useState(createBoard('human'))
+  const [AIBoard, setAIBoard] = useState(createBoard('AI'))
   return (
     <div className="App">
       {isInitial && (
@@ -17,11 +21,20 @@ function App() {
       )}
       {isPreparing && (
         <PreparingGame
+          board={humanBoard}
+          setBoard={setHumanBoard}
           setIsPreparing={setIsPreparing}
           setIsMainGame={setIsMainGame}
         />
       )}
-      {isMainGame && <MainGame />}
+      {isMainGame && (
+        <MainGame
+          humanBoard={humanBoard}
+          setHumanBoard={setHumanBoard}
+          AIBoard={AIBoard}
+          setAIBoard={setAIBoard}
+        />
+      )}
     </div>
   )
 }
