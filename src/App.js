@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import NewGamePage from './containers/NewGamePage'
+import PreparingGame from './containers/PreparingGame'
+import MainGame from './containers/MainGame'
 
 function App() {
+  const [isInitial, setIsInitial] = useState(true)
+  const [isPreparing, setIsPreparing] = useState(false)
+  const [isMainGame, setIsMainGame] = useState(false)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isInitial && (
+        <NewGamePage
+          setIsInitial={setIsInitial}
+          setIsPreparing={setIsPreparing}
+        />
+      )}
+      {isPreparing && (
+        <PreparingGame
+          setIsPreparing={setIsPreparing}
+          setIsMainGame={setIsMainGame}
+        />
+      )}
+      {isMainGame && <MainGame />}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
