@@ -29,7 +29,7 @@ export default function PreparingGame({
         <header>
           <h1 className="logo">BATTLESHIP</h1>
         </header>
-        <div>
+        <div className="prep-header-message">
           <p>{headerMessage}</p>
         </div>
         <div className="prep-board-and-ships">
@@ -45,16 +45,20 @@ export default function PreparingGame({
             </div>
           </div>
           <div className="prep-ships-container">
-            <button>Carrier</button>
-            <button>Battleship</button>
-            <button>Warship</button>
-            <button>Submarine</button>
-            <button>Patrol Boat</button>
+            <div className="prep-ships-buttons">
+              <button>Carrier</button>
+              <button>Battleship</button>
+              <button>Warship</button>
+              <button>Submarine</button>
+              <button>Patrol Boat</button>
+            </div>
+            <div className="prep-start-container">
+              <button disabled={!allPrepared} onClick={handleStartGame}>
+                Start Game
+              </button>
+            </div>
           </div>
         </div>
-        <button disabled={!allPrepared} onClick={handleStartGame}>
-          Start Game
-        </button>
       </div>
       <Footer />
     </>

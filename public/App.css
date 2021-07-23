@@ -47,28 +47,96 @@ body {
 .prep-container .logo {
   font-family: 'Bebas Neue', cursive;
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   margin-left: 20px;
   font-size: 40px;
   padding-top: 20px;
   user-select: none;
 }
 
+.prep-header-message {
+  font-family: 'Bebas Neue', cursive;
+  background-color: rgb(44, 44, 44);
+  height: 60px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prep-header-message p {
+  font-size: 35px;
+}
+
 .prep-board-and-ships {
   margin: auto;
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 80%;
+  min-width: 1000px;
 }
 
 .prep-ships-container {
-  height: 100%;
+  font-family: 'Bebas Neue', cursive;
   width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.prep-ships-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+.prep-ships-buttons button {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 2.5rem;
+  width: 6.5rem;
+  font-family: inherit;
+  font-size: 20px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+}
+
+.prep-ships-buttons button:hover {
+  background-color: rgb(165, 164, 164);
+}
+
+.prep-ships-buttons button:first-of-type {
+  margin-top: -10px;
+}
+
+.prep-ships-buttons button:last-of-type {
+  margin-bottom: 30px;
+}
+
+.prep-start-container button {
+  font-family: inherit;
+  font-size: 25px;
+  border: none;
+  background-color: rgb(44, 44, 44);
+  height: 3rem;
+  width: 8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.prep-start-container button:hover :enabled {
+  background-color: rgb(65, 64, 64);
+}
+
+.prep-start-container button:disabled {
+  opacity: 0.5;
+  cursor: auto;
 }
 
 .prep-board-container {
