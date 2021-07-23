@@ -44,6 +44,16 @@ body {
 }
 
 /*/ ///////////////////Preparing Game Page////////////////////*/
+.prep-container .logo {
+  font-family: 'Bebas Neue', cursive;
+  margin-top: 0;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  font-size: 40px;
+  padding-top: 20px;
+  user-select: none;
+}
+
 .prep-board-and-ships {
   margin: auto;
   display: flex;

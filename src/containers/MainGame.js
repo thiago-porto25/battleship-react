@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Footer from '../components/Footer'
 
 export default function MainGame({
   humanBoard,
@@ -7,6 +8,8 @@ export default function MainGame({
   setAIBoard,
   setIsPreparing,
   setIsMainGame,
+  headerMessage,
+  setHeaderMessage,
 }) {
   const [isWinner, setIsWinner] = useState(false)
 

@@ -9,6 +9,8 @@ function App() {
   const [isPreparing, setIsPreparing] = useState(false)
   const [isMainGame, setIsMainGame] = useState(false)
 
+  const [headerMessage, setHeaderMessage] = useState('Place your Carrier!')
+
   const [humanBoard, setHumanBoard] = useState(createBoard())
   const [AIBoard, setAIBoard] = useState(selectRandomBoard())
   return (
@@ -25,6 +27,8 @@ function App() {
           setBoard={setHumanBoard}
           setIsPreparing={setIsPreparing}
           setIsMainGame={setIsMainGame}
+          headerMessage={headerMessage}
+          setHeaderMessage={setHeaderMessage}
         />
       )}
       {isMainGame && (
@@ -35,6 +39,8 @@ function App() {
           setAIBoard={setAIBoard}
           setIsPreparing={setIsPreparing}
           setIsMainGame={setIsMainGame}
+          headerMessage={headerMessage}
+          setHeaderMessage={setHeaderMessage}
         />
       )}
     </>
