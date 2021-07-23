@@ -103,8 +103,7 @@ body {
   width: 6.5rem;
   font-family: inherit;
   font-size: 20px;
-  border: none;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+  border: 2px solid black;
 }
 
 .prep-ships-buttons button:hover {
@@ -117,6 +116,10 @@ body {
 
 .prep-ships-buttons button:last-of-type {
   margin-bottom: 30px;
+}
+
+.prep-ships-buttons .selected {
+  background-color: rgb(165, 164, 164);
 }
 
 .prep-start-container button {
