@@ -6,6 +6,7 @@ body {
 
 #root {
   height: inherit;
+  position: relative;
 }
 
 /*////////////////////Initial Game Page////////////////////*/
@@ -78,4 +79,25 @@ body {
   border: 1px solid black;
   width: 35px;
   height: 35px;
+}
+
+footer {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+footer p a {
+  color: white;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
 }
