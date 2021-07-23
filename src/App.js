@@ -9,7 +9,7 @@ function App() {
   const [isPreparing, setIsPreparing] = useState(false)
   const [isMainGame, setIsMainGame] = useState(false)
 
-  const [headerMessage, setHeaderMessage] = useState('Place your Carrier!')
+  const [headerMessage, setHeaderMessage] = useState('Pick a Ship!')
 
   const [humanBoard, setHumanBoard] = useState(createBoard())
   const [AIBoard, setAIBoard] = useState(selectRandomBoard())
