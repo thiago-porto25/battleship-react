@@ -32,13 +32,90 @@ export default function PreparingGame({
       targetId === 79 ||
       targetId === 89 ||
       targetId === 99
-    )
+    ) {
       return
+    }
+
+    if (
+      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
+      (targetId === 7 ||
+        targetId === 17 ||
+        targetId === 27 ||
+        targetId === 37 ||
+        targetId === 47 ||
+        targetId === 57 ||
+        targetId === 67 ||
+        targetId === 77 ||
+        targetId === 87 ||
+        targetId === 97)
+    ) {
+      return
+    }
+
+    if (
+      (isPlacingShip === 'warship' ||
+        isPlacingShip === 'submarine' ||
+        isPlacingShip === 'battleship' ||
+        isPlacingShip === 'carrier') &&
+      (targetId === 8 ||
+        targetId === 18 ||
+        targetId === 28 ||
+        targetId === 38 ||
+        targetId === 48 ||
+        targetId === 58 ||
+        targetId === 68 ||
+        targetId === 78 ||
+        targetId === 88 ||
+        targetId === 98)
+    ) {
+      return
+    }
+
+    if (
+      isPlacingShip === 'carrier' &&
+      (targetId === 6 ||
+        targetId === 16 ||
+        targetId === 26 ||
+        targetId === 36 ||
+        targetId === 46 ||
+        targetId === 56 ||
+        targetId === 66 ||
+        targetId === 76 ||
+        targetId === 86 ||
+        targetId === 96)
+    ) {
+      return
+    }
 
     const newBoard = board.map((item, i) => {
+      if (isPlacingShip === 'carrier') {
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
+        else if (targetId + 2 === i) return isPlacingShip
+        else if (targetId + 3 === i) return isPlacingShip
+        else if (targetId + 4 === i) return isPlacingShip
+      }
+      if (isPlacingShip === 'battleship') {
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
+        else if (targetId + 2 === i) return isPlacingShip
+        else if (targetId + 3 === i) return isPlacingShip
+      }
+      if (isPlacingShip === 'warship') {
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
+        else if (targetId + 2 === i) return isPlacingShip
+      }
+      if (isPlacingShip === 'submarine') {
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
+        else if (targetId + 2 === i) return isPlacingShip
+      }
+      if (isPlacingShip === 'patrol') {
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
+      }
       if (item !== 'water') return item
-      else if (targetId === i) return isPlacingShip
-      else if (targetId + 1 === i) return isPlacingShip
       else return 'water'
     })
 
