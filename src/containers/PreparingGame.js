@@ -13,9 +13,17 @@ export default function PreparingGame({
   setHeaderMessage,
 }) {
   const [allPrepared, setAllPrepared] = useState(false)
+  const [isPlacingShip, setIsPlacingShip] = useState(false)
 
   const handlePrepClick = () => {
     return 1
+  }
+
+  const handleShipClick = (target, ship) => {
+    if (isPlacingShip) return
+    target.classList.toggle('selected')
+    setHeaderMessage(`Place your ${ship}!`)
+    setIsPlacingShip(ship)
   }
 
   const handleStartGame = () => {
@@ -46,11 +54,31 @@ export default function PreparingGame({
           </div>
           <div className="prep-ships-container">
             <div className="prep-ships-buttons">
-              <button>Carrier</button>
-              <button>Battleship</button>
-              <button>Warship</button>
-              <button>Submarine</button>
-              <button>Patrol Boat</button>
+              <button
+                onClick={({ target }) => handleShipClick(target, 'carrier')}
+              >
+                Carrier
+              </button>
+              <button
+                onClick={({ target }) => handleShipClick(target, 'battleship')}
+              >
+                Battleship
+              </button>
+              <button
+                onClick={({ target }) => handleShipClick(target, 'warship')}
+              >
+                Warship
+              </button>
+              <button
+                onClick={({ target }) => handleShipClick(target, 'submarine')}
+              >
+                Submarine
+              </button>
+              <button
+                onClick={({ target }) => handleShipClick(target, 'patrol boat')}
+              >
+                Patrol Boat
+              </button>
             </div>
             <div className="prep-start-container">
               <button disabled={!allPrepared} onClick={handleStartGame}>
