@@ -14,9 +14,37 @@ export default function PreparingGame({
 }) {
   const [allPrepared, setAllPrepared] = useState(false)
   const [isPlacingShip, setIsPlacingShip] = useState(false)
+  const [count, setCount] = useState(0)
 
-  const handlePrepClick = () => {
-    return 1
+  const handlePrepClick = (target) => {
+    if (!isPlacingShip) return
+
+    const targetId = parseInt(target.getAttribute('data-id'), 10)
+
+    if (
+      targetId === 9 ||
+      targetId === 19 ||
+      targetId === 29 ||
+      targetId === 39 ||
+      targetId === 49 ||
+      targetId === 59 ||
+      targetId === 69 ||
+      targetId === 79 ||
+      targetId === 89 ||
+      targetId === 99
+    )
+      return
+
+    const newBoard = board.map((item, i) => {
+      if (item !== 'water') return item
+      else if (targetId === i) return isPlacingShip
+      else if (targetId + 1 === i) return isPlacingShip
+      else return 'water'
+    })
+
+    setBoard(newBoard)
+    setIsPlacingShip(false)
+    if (count === 5) setAllPrepared(true)
   }
 
   const handleShipClick = (target, ship) => {
@@ -24,6 +52,8 @@ export default function PreparingGame({
     target.classList.toggle('selected')
     setHeaderMessage(`Place your ${ship}!`)
     setIsPlacingShip(ship)
+    setCount((prev) => prev + 1)
+    target.disabled = 'true'
   }
 
   const handleStartGame = () => {
@@ -47,7 +77,8 @@ export default function PreparingGame({
                 <Square
                   key={`${item}-${i}`}
                   boardId={i}
-                  //onClick={({ target }) => handlePrepClick(target)}
+                  onClick={({ target }) => handlePrepClick(target)}
+                  colorCode={item === 'water' ? 'white' : 'gray'}
                 />
               ))}
             </div>
@@ -75,7 +106,7 @@ export default function PreparingGame({
                 Submarine
               </button>
               <button
-                onClick={({ target }) => handleShipClick(target, 'patrol boat')}
+                onClick={({ target }) => handleShipClick(target, 'patrol')}
               >
                 Patrol Boat
               </button>
