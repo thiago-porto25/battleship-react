@@ -107,7 +107,7 @@ body {
 }
 
 .prep-ships-buttons button:hover {
-  background-color: rgb(165, 164, 164);
+  background-color: rgb(212, 209, 209);
 }
 
 .prep-ships-buttons button:first-of-type {
@@ -119,7 +119,7 @@ body {
 }
 
 .prep-ships-buttons .selected {
-  background-color: rgb(165, 164, 164);
+  background-color: rgb(126, 126, 126) !important;
 }
 
 .prep-start-container button {
@@ -160,6 +160,7 @@ body {
   border: 1px solid black;
   width: 35px;
   height: 35px;
+  cursor: pointer;
 }
 
 footer {
