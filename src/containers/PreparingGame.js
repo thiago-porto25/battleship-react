@@ -18,6 +18,8 @@ export default function PreparingGame({
 
   const handlePrepClick = (target) => {
     if (!isPlacingShip) return
+    console.log(target.getAttribute('disabled'))
+    if (target.getAttribute('disabled') === '') return
 
     const targetId = parseInt(target.getAttribute('data-id'), 10)
 

@@ -17,6 +17,7 @@ export default function Square({ onClick, colorCode, boardId }) {
       onMouseLeave={() => setIsMouseIn(false)}
       onClick={onClick}
       data-id={boardId}
+      disabled={colorCode === 'gray' ? true : false}
     ></div>
   )
 }
