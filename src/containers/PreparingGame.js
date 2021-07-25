@@ -18,7 +18,6 @@ export default function PreparingGame({
 
   const handlePrepClick = (target) => {
     if (!isPlacingShip) return
-    console.log(target.getAttribute('disabled'))
     if (target.getAttribute('disabled') === '') return
 
     const targetId = parseInt(target.getAttribute('data-id'), 10)
@@ -89,6 +88,9 @@ export default function PreparingGame({
       return
     }
 
+    /// create a new state to watch if what i clicked was a water next to a ship
+    /// if true don't let the code in the end of this function run
+
     const newBoard = board.map((item, i) => {
       if (isPlacingShip === 'carrier') {
         if (targetId === i) return isPlacingShip
@@ -114,8 +116,9 @@ export default function PreparingGame({
         else if (targetId + 2 === i) return isPlacingShip
       }
       if (isPlacingShip === 'patrol') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
+        if (targetId === i && board[targetId + 1] === 'water')
+          return isPlacingShip
+        else if (targetId + 1 === i && item === 'water') return isPlacingShip
       }
       if (item !== 'water') return item
       else return 'water'
@@ -124,6 +127,7 @@ export default function PreparingGame({
     setBoard(newBoard)
     setIsPlacingShip(false)
     if (count === 5) setAllPrepared(true)
+    setHeaderMessage('start game!')
   }
 
   const handleShipClick = (target, ship) => {
@@ -132,7 +136,7 @@ export default function PreparingGame({
     setHeaderMessage(`Place your ${ship}!`)
     setIsPlacingShip(ship)
     setCount((prev) => prev + 1)
-    target.disabled = 'true'
+    target.disabled = true
   }
 
   const handleStartGame = () => {
