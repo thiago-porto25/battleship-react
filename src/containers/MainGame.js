@@ -13,5 +13,10 @@ export default function MainGame({
 }) {
   const [isWinner, setIsWinner] = useState(false)
 
-  return <div>TEsting</div>
+  return (
+    <>
+      <div>TEsting</div>
+      <Footer />
+    </>
+  )
 }

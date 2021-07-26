@@ -93,10 +93,6 @@ export default function PreparingGame({
       return
     }
 
-    /// create a new state to watch if what i clicked was a water next to a ship
-    /// if true don't let the code in the end of this function run
-    /// only run the start game message when the count is 5
-
     const newBoard = board.map((item, i) => {
       if (isPlacingShip === 'carrier') {
         if (targetId === i) return isPlacingShip
