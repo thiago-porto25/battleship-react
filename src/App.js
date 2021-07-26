@@ -13,6 +13,7 @@ function App() {
 
   const [humanBoard, setHumanBoard] = useState(createBoard())
   const [AIBoard, setAIBoard] = useState(selectAIBoard())
+  console.log(AIBoard)
   return (
     <>
       {isInitial && (
