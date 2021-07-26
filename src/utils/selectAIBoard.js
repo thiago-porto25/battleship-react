@@ -2,7 +2,7 @@ import createBoard from './createBoard'
 const selectAIBoard = () => {
   const board = createBoard()
 
-  const randomNumber = Math.floor(Math.random() * 5 + 1)
+  const randomNumber = Math.floor(Math.random() * 10 + 1)
 
   if (randomNumber === 1) {
     board.splice(2, 5, 'carrier', 'carrier', 'carrier', 'carrier', 'carrier')
@@ -54,6 +54,60 @@ const selectAIBoard = () => {
     board.splice(95, 3, 'warship', 'warship', 'warship')
     board.splice(70, 3, 'submarine', 'submarine', 'submarine')
     board.splice(48, 2, 'patrol', 'patrol')
+  } else if (randomNumber === 6) {
+    board.splice(50, 1, 'carrier')
+    board.splice(60, 1, 'carrier')
+    board.splice(70, 1, 'carrier')
+    board.splice(80, 1, 'carrier')
+    board.splice(90, 1, 'carrier')
+    board.splice(5, 4, 'battleship', 'battleship', 'battleship', 'battleship')
+    board.splice(68, 1, 'warship')
+    board.splice(78, 1, 'warship')
+    board.splice(88, 1, 'warship')
+    board.splice(71, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(83, 1, 'patrol')
+    board.splice(93, 1, 'patrol')
+  } else if (randomNumber === 7) {
+    board.splice(27, 1, 'carrier')
+    board.splice(37, 1, 'carrier')
+    board.splice(47, 1, 'carrier')
+    board.splice(57, 1, 'carrier')
+    board.splice(67, 1, 'carrier')
+    board.splice(81, 4, 'battleship', 'battleship', 'battleship', 'battleship')
+    board.splice(6, 3, 'warship', 'warship', 'warship')
+    board.splice(31, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(12, 1, 'patrol')
+    board.splice(22, 1, 'patrol')
+  } else if (randomNumber === 8) {
+    board.splice(42, 1, 'carrier')
+    board.splice(52, 1, 'carrier')
+    board.splice(62, 1, 'carrier')
+    board.splice(72, 1, 'carrier')
+    board.splice(82, 1, 'carrier')
+    board.splice(17, 1, 'battleship')
+    board.splice(27, 1, 'battleship')
+    board.splice(37, 1, 'battleship')
+    board.splice(47, 1, 'battleship')
+    board.splice(56, 3, 'warship', 'warship', 'warship')
+    board.splice(95, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(81, 2, 'patrol', 'patrol')
+  } else if (randomNumber === 9) {
+    board.splice(92, 5, 'carrier', 'carrier', 'carrier', 'carrier', 'carrier')
+    board.splice(58, 1, 'battleship')
+    board.splice(68, 1, 'battleship')
+    board.splice(78, 1, 'battleship')
+    board.splice(88, 1, 'battleship')
+    board.splice(15, 3, 'warship', 'warship', 'warship')
+    board.splice(0, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(33, 1, 'patrol')
+    board.splice(23, 1, 'patrol')
+  } else if (randomNumber === 10) {
+    board.splice(74, 5, 'carrier', 'carrier', 'carrier', 'carrier', 'carrier')
+    board.splice(0, 4, 'battleship', 'battleship', 'battleship', 'battleship')
+    board.splice(57, 3, 'warship', 'warship', 'warship')
+    board.splice(95, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(29, 1, 'patrol')
+    board.splice(39, 1, 'patrol')
   }
 
   return board
