@@ -161,6 +161,7 @@ body {
   width: 35px;
   height: 35px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 footer {

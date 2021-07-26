@@ -4,9 +4,8 @@ export default function Square({ onClick, colorCode, boardId }) {
   const [isMouseIn, setIsMouseIn] = useState(false)
 
   const styles = {
-    backgroundColor: isMouseIn ? 'rgb(220, 220, 220)' : 'white',
-    border: isMouseIn ? '1px solid gray' : '1px solid black',
-    backgroundColor: colorCode,
+    backgroundColor: isMouseIn ? 'rgb(150, 150, 150)' : colorCode,
+    border: isMouseIn ? '2px solid gray' : '1px solid black',
   }
 
   return (
