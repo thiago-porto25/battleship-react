@@ -1,4 +1,4 @@
-export const createBoard = () => {
+const createBoard = () => {
   let newBoard = []
 
   for (let i = 0; i < 100; i++) {
@@ -8,4 +8,4 @@ export const createBoard = () => {
   return newBoard
 }
 
-export const selectRandomBoard = () => {}
+export default createBoard

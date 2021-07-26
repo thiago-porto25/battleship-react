@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { createShips } from '../utils/createShips'
+import { createShips } from '../utils'
 
 export default function MainGame({
   humanBoard,
@@ -19,6 +19,8 @@ export default function MainGame({
   const [AIShips, setAIShips] = useState(createShips())
 
   useEffect(() => setHeaderMessage('Your Move!'), [])
+
+  console.log(humanBoard)
 
   return (
     <>

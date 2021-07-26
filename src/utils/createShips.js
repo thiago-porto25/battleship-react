@@ -1,4 +1,4 @@
-export const createShips = () => {
+const createShips = () => {
   return {
     carrier: {
       totalHits: 0,
@@ -57,3 +57,5 @@ export const createShips = () => {
     },
   }
 }
+
+export default createShips

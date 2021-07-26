@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import InitialPage from './containers/InitialPage'
 import PreparingGame from './containers/PreparingGame'
 import MainGame from './containers/MainGame'
-import { createBoard, selectRandomBoard } from './utils/createBoard'
+import { createBoard, selectAIBoard } from './utils'
 
 function App() {
   const [isInitial, setIsInitial] = useState(true)
@@ -12,7 +12,7 @@ function App() {
   const [headerMessage, setHeaderMessage] = useState('Pick a Ship!')
 
   const [humanBoard, setHumanBoard] = useState(createBoard())
-  const [AIBoard, setAIBoard] = useState(selectRandomBoard())
+  const [AIBoard, setAIBoard] = useState(selectAIBoard())
   return (
     <>
       {isInitial && (
