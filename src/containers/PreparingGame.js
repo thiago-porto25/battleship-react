@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Square from '../components/Square'
 import Footer from '../components/Footer'
 // pesquisar como fazer aquilo de clicar em algo e essa coisa seguir o mouse e fazer o hover em uma coisa e outras tambem mudar
-//////////////USE CSS IN REACT FOR STYLES THAT NEED VARIABLES
 
 export default function PreparingGame({
   setIsPreparing,
