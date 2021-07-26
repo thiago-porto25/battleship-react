@@ -32,7 +32,9 @@ export default function PreparingGame({
       targetId === 69 ||
       targetId === 79 ||
       targetId === 89 ||
-      targetId === 99
+      targetId === 99 ||
+      board[targetId + 1] !== 'water' ||
+      board[targetId + 2] !== 'water'
     ) {
       return
     }
@@ -48,7 +50,8 @@ export default function PreparingGame({
         targetId === 67 ||
         targetId === 77 ||
         targetId === 87 ||
-        targetId === 97)
+        targetId === 97 ||
+        board[targetId + 4] !== 'water')
     ) {
       return
     }
@@ -67,7 +70,8 @@ export default function PreparingGame({
         targetId === 68 ||
         targetId === 78 ||
         targetId === 88 ||
-        targetId === 98)
+        targetId === 98 ||
+        board[targetId + 3] !== 'water')
     ) {
       return
     }
@@ -83,13 +87,15 @@ export default function PreparingGame({
         targetId === 66 ||
         targetId === 76 ||
         targetId === 86 ||
-        targetId === 96)
+        targetId === 96 ||
+        board[targetId + 5] !== 'water')
     ) {
       return
     }
 
     /// create a new state to watch if what i clicked was a water next to a ship
     /// if true don't let the code in the end of this function run
+    /// only run the start game message when the count is 5
 
     const newBoard = board.map((item, i) => {
       if (isPlacingShip === 'carrier') {
@@ -116,9 +122,8 @@ export default function PreparingGame({
         else if (targetId + 2 === i) return isPlacingShip
       }
       if (isPlacingShip === 'patrol') {
-        if (targetId === i && board[targetId + 1] === 'water')
-          return isPlacingShip
-        else if (targetId + 1 === i && item === 'water') return isPlacingShip
+        if (targetId === i) return isPlacingShip
+        else if (targetId + 1 === i) return isPlacingShip
       }
       if (item !== 'water') return item
       else return 'water'
@@ -126,8 +131,10 @@ export default function PreparingGame({
 
     setBoard(newBoard)
     setIsPlacingShip(false)
-    if (count === 5) setAllPrepared(true)
-    setHeaderMessage('start game!')
+    if (count === 5) {
+      setAllPrepared(true)
+      setHeaderMessage('start game!')
+    }
   }
 
   const handleShipClick = (target, ship) => {
