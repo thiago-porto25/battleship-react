@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Square from '../components/Square'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 // pesquisar como fazer aquilo de clicar em algo e essa coisa seguir o mouse e fazer o hover em uma coisa e outras tambem mudar
 
 export default function PreparingGame({
@@ -149,12 +150,7 @@ export default function PreparingGame({
   return (
     <>
       <div className="prep-container">
-        <header>
-          <h1 className="logo">BATTLESHIP</h1>
-        </header>
-        <div className="prep-header-message">
-          <p>{headerMessage}</p>
-        </div>
+        <Header message={headerMessage} />
         <div className="prep-board-and-ships">
           <div className="prep-board-container">
             <div className="prep-board">

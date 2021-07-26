@@ -44,30 +44,6 @@ body {
 }
 
 /*/ ///////////////////Preparing Game Page////////////////////*/
-.prep-container .logo {
-  font-family: 'Bebas Neue', cursive;
-  margin-top: 0;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  font-size: 40px;
-  padding-top: 20px;
-  user-select: none;
-}
-
-.prep-header-message {
-  font-family: 'Bebas Neue', cursive;
-  background-color: rgb(44, 44, 44);
-  height: 60px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.prep-header-message p {
-  font-size: 35px;
-}
-
 .prep-board-and-ships {
   margin: auto;
   margin-top: 40px;
@@ -165,6 +141,31 @@ body {
 }
 
 /*/ ///////////////////Main Game Page////////////////////*/
+
+/*/ ///////////////////Header Game Page////////////////////*/
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 40px;
+  padding-top: 20px;
+  user-select: none;
+}
+
+.header-message {
+  font-family: 'Bebas Neue', cursive;
+  background-color: rgb(44, 44, 44);
+  height: 60px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-message p {
+  font-size: 35px;
+}
 
 /*/ ///////////////////Footer////////////////////*/
 footer {

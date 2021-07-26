@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 import { createShips } from '../utils/createShips'
 
 export default function MainGame({
@@ -16,20 +18,11 @@ export default function MainGame({
   const [playerShips, setPlayerShips] = useState(createShips())
   const [AIShips, setAIShips] = useState(createShips())
 
-  const ships = createShips()
-
-  console.log(ships.carrier)
-  ships.carrier.getHit()
-  ships.carrier.getHit()
-  ships.carrier.getHit()
-  ships.carrier.getHit()
-  ships.carrier.getHit()
-
-  ships.carrier.checkSunk()
-  console.log(ships.carrier)
+  useEffect(() => setHeaderMessage('Your Move!'), [])
 
   return (
     <>
+      <Header message={headerMessage} />
       <div>TEsting</div>
       <Footer />
     </>
