@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Square from '../components/Square'
 import { createShips } from '../utils'
 
 export default function MainGame({
@@ -20,12 +21,40 @@ export default function MainGame({
 
   useEffect(() => setHeaderMessage('Your Move!'), [])
 
-  console.log(humanBoard)
+  const handlePlayAgain = () => {
+    setIsPreparing(true)
+    setIsMainGame(false)
+  }
 
   return (
     <>
       <Header message={headerMessage} />
-      <div>TEsting</div>
+      <div className="main-board-container">
+        <div>
+          <header>Player</header>
+          <div className="main-board human">
+            {humanBoard.map((item, i) => (
+              <Square
+                key={`${item}-${i}`}
+                boardId={i}
+                colorCode={item === 'water' ? 'white' : 'gray'}
+              />
+            ))}
+          </div>
+        </div>
+        <div>
+          <header>Computer</header>
+          <div className="main-board AI">
+            {AIBoard.map((item, i) => (
+              <Square
+                key={`${item}-${i}`}
+                boardId={i}
+                colorCode={item === 'water' ? 'white' : 'gray'}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   )

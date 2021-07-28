@@ -64,7 +64,7 @@ const selectAIBoard = () => {
     board.splice(68, 1, 'warship')
     board.splice(78, 1, 'warship')
     board.splice(88, 1, 'warship')
-    board.splice(71, 3, 'submarine', 'submarine', 'submarine')
+    board.splice(34, 3, 'submarine', 'submarine', 'submarine')
     board.splice(83, 1, 'patrol')
     board.splice(93, 1, 'patrol')
   } else if (randomNumber === 7) {
