@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Square from '../components/Square'
+import WinnerModal from '../components/WinnerModal'
 import { createShips } from '../utils'
 
 export default function MainGame({
@@ -16,6 +17,7 @@ export default function MainGame({
   setHeaderMessage,
 }) {
   const [isWinner, setIsWinner] = useState(false)
+  const [currentPlayer, setCurrentPlayer] = useState('human')
   const [playerShips, setPlayerShips] = useState(createShips())
   const [AIShips, setAIShips] = useState(createShips())
 
@@ -50,8 +52,14 @@ export default function MainGame({
         }
       } else return item
     })
-    console.log(newAIBoard)
     setAIBoard(newAIBoard)
+    setIsWinner(AIShips.checkWinner())
+
+    if (isWinner) {
+      setHeaderMessage("Computer's turn")
+      setCurrentPlayer('AI')
+      handleAIMove()
+    }
   }
 
   useEffect(() => setHeaderMessage('Your Move!'), [])
@@ -99,6 +107,7 @@ export default function MainGame({
           </div>
         </div>
       </div>
+      {isWinner && <WinnerModal handlePlayAgain={handlePlayAgain} />}
       <Footer />
     </>
   )
