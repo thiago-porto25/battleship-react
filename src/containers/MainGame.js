@@ -23,16 +23,17 @@ export default function MainGame({
   const [AIShips, setAIShips] = useState(createShips())
 
   const handleAIMove = () => {
+    if (isWinner) return
+
     let randId
-
-    for (let i = 0; i < 99; i++) {
+    while (true) {
       const randomNum = Math.floor(Math.random() * 100)
-
       if (humanBoard[randomNum] !== 'hit' || humanBoard !== 'water hit') {
         randId = randomNum
         break
       }
     }
+
     const newPlayerShips = clone(playerShips)
     const newHumanBoard = humanBoard.map((item, index) => {
       if (randId === index) {
@@ -62,10 +63,11 @@ export default function MainGame({
 
     setHumanBoard(newHumanBoard)
     setPlayerShips(newPlayerShips)
-    setIsWinner(playerShips.checkWinner())
+    const bool = newPlayerShips.checkWinner()
+    setIsWinner(bool)
 
-    if (isWinner) {
-      setHeaderMessage('Computer wins!')
+    if (bool) {
+      setHeaderMessage('The Computer wins!')
     } else {
       setHeaderMessage("Player's turn")
       setCurrentPlayer('player')
@@ -77,7 +79,6 @@ export default function MainGame({
     if (AIBoard[targetId] === 'hit' || AIBoard[targetId] === 'water hit') return
 
     const newAIShips = clone(AIShips)
-    console.log(newAIShips)
     const newAIBoard = AIBoard.map((item, index) => {
       if (targetId === index) {
         switch (item) {
@@ -105,14 +106,16 @@ export default function MainGame({
     })
     setAIBoard(newAIBoard)
     setAIShips(newAIShips)
-    setIsWinner(AIShips.checkWinner())
+    const bool = newAIShips.checkWinner()
+    setIsWinner(bool)
 
-    if (isWinner) {
+    if (bool) {
       setHeaderMessage('Player wins!')
+      console.log('weeeee')
     } else {
       setHeaderMessage("Computer's turn")
       setCurrentPlayer('AI')
-      setTimeout(() => handleAIMove(), 1000)
+      setTimeout(() => handleAIMove(), 800)
     }
   }
 
@@ -134,7 +137,15 @@ export default function MainGame({
               <Square
                 key={`${item}-${i}`}
                 boardId={i}
-                colorCode={item === 'water' ? 'white' : 'gray'}
+                colorCode={
+                  item === 'water'
+                    ? 'white'
+                    : item === 'hit'
+                    ? 'red'
+                    : item === 'water hit'
+                    ? 'blue'
+                    : 'gray'
+                }
                 name="player"
               />
             ))}
@@ -155,7 +166,10 @@ export default function MainGame({
                     : 'white'
                 }
                 name="AI"
-                onClick={({ target }) => handlePlayerMove(target)}
+                onClick={({ target }) => {
+                  handlePlayerMove(target)
+                  console.log(isWinner)
+                }}
                 currentPlayer={currentPlayer}
               />
             ))}

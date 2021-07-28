@@ -9,6 +9,7 @@ const createShips = () => {
         this.patrol.checkSunk()
       )
         return true
+      else return false
     },
     carrier: {
       totalHits: 0,
@@ -17,51 +18,47 @@ const createShips = () => {
         this.totalHits = this.totalHits + 1
       },
       checkSunk() {
-        return this.totalHits >= 5 ? true : false
+        return this.totalHits >= this.size
       },
     },
     battleship: {
       totalHits: 0,
       size: 4,
-      isSunk: false,
       getHit() {
         this.totalHits = this.totalHits + 1
       },
       checkSunk() {
-        this.isSunk = this.totalHits >= 5 ? true : false
+        return this.totalHits >= this.size
       },
     },
     warship: {
       totalHits: 0,
       size: 3,
-      isSunk: false,
       getHit() {
         this.totalHits = this.totalHits + 1
       },
       checkSunk() {
-        this.isSunk = this.totalHits >= 5 ? true : false
+        return this.totalHits >= this.size
       },
     },
     submarine: {
       totalHits: 0,
       size: 3,
-      isSunk: false,
       getHit() {
         this.totalHits = this.totalHits + 1
       },
       checkSunk() {
-        this.isSunk = this.totalHits >= 5 ? true : false
+        return this.totalHits >= this.size
       },
     },
     patrol: {
       totalHits: 0,
-      size: 3,
-      isSunk: false,
+      size: 2,
       getHit() {
         this.totalHits = this.totalHits + 1
       },
       checkSunk() {
-        this.isSunk = this.totalHits >= 5 ? true : false
+        return this.totalHits >= this.size
       },
     },
   }

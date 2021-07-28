@@ -15,13 +15,18 @@ export default function Square({
       pointerEvents: colorCode === 'gray' ? 'none' : '',
     }
 
+    const playerStyles = {
+      backgroundColor: colorCode,
+    }
+
     const AIStyles = {
       backgroundColor:
         isMouseIn && colorCode === 'white' ? 'rgb(210, 210, 210)' : colorCode,
       pointerEvents: currentPlayer === 'AI' ? 'none' : '',
     }
 
-    if (name === 'prep' || name === 'player') return prepStyles
+    if (name === 'prep') return prepStyles
+    if (name === 'player') return playerStyles
     if (name === 'AI') return AIStyles
   }
   return (
