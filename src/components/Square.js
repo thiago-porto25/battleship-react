@@ -11,7 +11,8 @@ export default function Square({ onClick, colorCode, boardId, name }) {
     }
 
     const AIStyles = {
-      backgroundColor: isMouseIn ? 'rgb(210, 210, 210)' : colorCode,
+      backgroundColor:
+        isMouseIn && colorCode === 'white' ? 'rgb(210, 210, 210)' : colorCode,
     }
 
     if (name === 'prep' || name === 'player') return prepStyles

@@ -19,6 +19,41 @@ export default function MainGame({
   const [playerShips, setPlayerShips] = useState(createShips())
   const [AIShips, setAIShips] = useState(createShips())
 
+  const handleAIMove = () => {}
+
+  const handlePlayerMove = (target) => {
+    const targetId = parseInt(target.getAttribute('data-id'), 10)
+    if (AIBoard[targetId] === 'hit' || AIBoard[targetId] === 'water hit') return
+
+    const newAIBoard = AIBoard.map((item, index) => {
+      if (targetId === index) {
+        switch (item) {
+          case 'water':
+            return 'water hit'
+          case 'carrier':
+            AIShips.carrier.getHit()
+            return 'hit'
+          case 'battleship':
+            AIShips.battleship.getHit()
+            return 'hit'
+          case 'warship':
+            AIShips.warship.getHit()
+            return 'hit'
+          case 'submarine':
+            AIShips.submarine.getHit()
+            return 'hit'
+          case 'patrol':
+            AIShips.patrol.getHit()
+            return 'hit'
+          default:
+            return item
+        }
+      } else return item
+    })
+    console.log(newAIBoard)
+    setAIBoard(newAIBoard)
+  }
+
   useEffect(() => setHeaderMessage('Your Move!'), [])
 
   const handlePlayAgain = () => {
@@ -50,8 +85,15 @@ export default function MainGame({
               <Square
                 key={`${item}-${i}`}
                 boardId={i}
-                colorCode={item === 'hit' ? 'red' : 'white'}
+                colorCode={
+                  item === 'hit'
+                    ? 'red'
+                    : item === 'water hit'
+                    ? 'blue'
+                    : 'white'
+                }
                 name="AI"
+                onClick={({ target }) => handlePlayerMove(target)}
               />
             ))}
           </div>
