@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Square from '../components/Square'
 import WinnerModal from '../components/WinnerModal'
 import { createShips } from '../utils'
+import clone from 'just-clone'
 
 export default function MainGame({
   humanBoard,
@@ -21,31 +22,81 @@ export default function MainGame({
   const [playerShips, setPlayerShips] = useState(createShips())
   const [AIShips, setAIShips] = useState(createShips())
 
-  const handleAIMove = () => {}
+  const handleAIMove = () => {
+    let randId
+
+    for (let i = 0; i < 99; i++) {
+      const randomNum = Math.floor(Math.random() * 100)
+
+      if (humanBoard[randomNum] !== 'hit' || humanBoard !== 'water hit') {
+        randId = randomNum
+        break
+      }
+    }
+    const newPlayerShips = clone(playerShips)
+    const newHumanBoard = humanBoard.map((item, index) => {
+      if (randId === index) {
+        switch (item) {
+          case 'water':
+            return 'water hit'
+          case 'carrier':
+            newPlayerShips.carrier.getHit()
+            return 'hit'
+          case 'battleship':
+            newPlayerShips.battleship.getHit()
+            return 'hit'
+          case 'warship':
+            newPlayerShips.warship.getHit()
+            return 'hit'
+          case 'submarine':
+            newPlayerShips.submarine.getHit()
+            return 'hit'
+          case 'patrol':
+            newPlayerShips.patrol.getHit()
+            return 'hit'
+          default:
+            return item
+        }
+      } else return item
+    })
+
+    setHumanBoard(newHumanBoard)
+    setPlayerShips(newPlayerShips)
+    setIsWinner(playerShips.checkWinner())
+
+    if (isWinner) {
+      setHeaderMessage('Computer wins!')
+    } else {
+      setHeaderMessage("Player's turn")
+      setCurrentPlayer('player')
+    }
+  }
 
   const handlePlayerMove = (target) => {
     const targetId = parseInt(target.getAttribute('data-id'), 10)
     if (AIBoard[targetId] === 'hit' || AIBoard[targetId] === 'water hit') return
 
+    const newAIShips = clone(AIShips)
+    console.log(newAIShips)
     const newAIBoard = AIBoard.map((item, index) => {
       if (targetId === index) {
         switch (item) {
           case 'water':
             return 'water hit'
           case 'carrier':
-            AIShips.carrier.getHit()
+            newAIShips.carrier.getHit()
             return 'hit'
           case 'battleship':
-            AIShips.battleship.getHit()
+            newAIShips.battleship.getHit()
             return 'hit'
           case 'warship':
-            AIShips.warship.getHit()
+            newAIShips.warship.getHit()
             return 'hit'
           case 'submarine':
-            AIShips.submarine.getHit()
+            newAIShips.submarine.getHit()
             return 'hit'
           case 'patrol':
-            AIShips.patrol.getHit()
+            newAIShips.patrol.getHit()
             return 'hit'
           default:
             return item
@@ -53,12 +104,15 @@ export default function MainGame({
       } else return item
     })
     setAIBoard(newAIBoard)
+    setAIShips(newAIShips)
     setIsWinner(AIShips.checkWinner())
 
     if (isWinner) {
+      setHeaderMessage('Player wins!')
+    } else {
       setHeaderMessage("Computer's turn")
       setCurrentPlayer('AI')
-      handleAIMove()
+      setTimeout(() => handleAIMove(), 1000)
     }
   }
 
@@ -102,6 +156,7 @@ export default function MainGame({
                 }
                 name="AI"
                 onClick={({ target }) => handlePlayerMove(target)}
+                currentPlayer={currentPlayer}
               />
             ))}
           </div>
