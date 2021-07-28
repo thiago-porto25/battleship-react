@@ -132,12 +132,23 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+/*/ ///////////////////Square////////////////////*/
+
 .board-square {
   border: 1px solid black;
   width: 35px;
   height: 35px;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.board-square.AI {
+  cursor: crosshair;
+}
+
+.board-square.player {
+  pointer-events: none;
+  user-select: none;
 }
 
 /*/ ///////////////////Main Game Page////////////////////*/
@@ -160,14 +171,8 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
   font-family: 'Bebas Neue', cursive;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-}
-
-.AI {
-}
-.AI:hover {
-  color: unset;
 }
 
 /*/ ///////////////////Header Game Page////////////////////*/

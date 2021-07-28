@@ -160,6 +160,7 @@ export default function PreparingGame({
                   boardId={i}
                   onClick={({ target }) => handlePrepClick(target)}
                   colorCode={item === 'water' ? 'white' : 'gray'}
+                  name="prep"
                 />
               ))}
             </div>

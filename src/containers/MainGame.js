@@ -38,6 +38,7 @@ export default function MainGame({
                 key={`${item}-${i}`}
                 boardId={i}
                 colorCode={item === 'water' ? 'white' : 'gray'}
+                name="player"
               />
             ))}
           </div>
@@ -49,7 +50,8 @@ export default function MainGame({
               <Square
                 key={`${item}-${i}`}
                 boardId={i}
-                colorCode={item === 'water' ? 'white' : 'gray'}
+                colorCode={item === 'hit' ? 'red' : 'white'}
+                name="AI"
               />
             ))}
           </div>
