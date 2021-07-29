@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Square from '../components/Square'
 import WinnerModal from '../components/WinnerModal'
-import { createShips } from '../utils'
+import { createShips, selectAIBoard, createBoard } from '../utils'
 import clone from 'just-clone'
 
 export default function MainGame({
@@ -123,7 +123,14 @@ export default function MainGame({
     setIsMainGame(false)
   }
 
-  useEffect(() => setHeaderMessage('Your Move!'), [])
+  useEffect(() => {
+    setHeaderMessage('Your Move!')
+
+    return () => {
+      setHumanBoard(createBoard())
+      setAIBoard(selectAIBoard())
+    }
+  }, [])
 
   return (
     <>

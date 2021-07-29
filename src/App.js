@@ -9,7 +9,7 @@ function App() {
   const [isPreparing, setIsPreparing] = useState(false)
   const [isMainGame, setIsMainGame] = useState(false)
 
-  const [headerMessage, setHeaderMessage] = useState('Pick a Ship!')
+  const [headerMessage, setHeaderMessage] = useState('')
 
   const [humanBoard, setHumanBoard] = useState(createBoard())
   const [AIBoard, setAIBoard] = useState(selectAIBoard())
@@ -25,6 +25,7 @@ function App() {
         <PreparingGame
           board={humanBoard}
           setBoard={setHumanBoard}
+          setAIBoard={setAIBoard}
           setIsPreparing={setIsPreparing}
           setIsMainGame={setIsMainGame}
           headerMessage={headerMessage}

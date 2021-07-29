@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Square from '../components/Square'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-// pesquisar como fazer aquilo de clicar em algo e essa coisa seguir o mouse e fazer o hover em uma coisa e outras tambem mudar
 
 export default function PreparingGame({
   setIsPreparing,
@@ -16,6 +15,8 @@ export default function PreparingGame({
   const [isPlacingShip, setIsPlacingShip] = useState(false)
   const [count, setCount] = useState(0)
   const [Axis, setAxis] = useState('X')
+
+  useEffect(() => setHeaderMessage('Pick a Ship!'))
 
   const handlePrepClick = (target) => {
     if (!isPlacingShip) return
