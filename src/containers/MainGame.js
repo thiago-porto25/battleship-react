@@ -17,7 +17,7 @@ export default function MainGame({
   headerMessage,
   setHeaderMessage,
 }) {
-  const [isWinner, setIsWinner] = useState(false)
+  const [isWinner, setIsWinner] = useState(true)
   const [currentPlayer, setCurrentPlayer] = useState('human')
   const [playerShips, setPlayerShips] = useState(createShips())
   const [AIShips, setAIShips] = useState(createShips())
