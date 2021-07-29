@@ -34,7 +34,7 @@ export default function PreparingGame({
       targetId === 89 ||
       targetId === 99 ||
       board[targetId + 1] !== 'water' ||
-      board[targetId + 2] !== 'water'
+      (board[targetId + 2] !== 'water' && targetId + 2 <= 99)
     ) {
       return
     }
