@@ -88,9 +88,9 @@ const selectAIBoard = () => {
     board.splice(27, 1, 'battleship')
     board.splice(37, 1, 'battleship')
     board.splice(47, 1, 'battleship')
-    board.splice(56, 3, 'warship', 'warship', 'warship')
+    board.splice(66, 3, 'warship', 'warship', 'warship')
     board.splice(95, 3, 'submarine', 'submarine', 'submarine')
-    board.splice(81, 2, 'patrol', 'patrol')
+    board.splice(23, 2, 'patrol', 'patrol')
   } else if (randomNumber === 9) {
     board.splice(92, 5, 'carrier', 'carrier', 'carrier', 'carrier', 'carrier')
     board.splice(58, 1, 'battleship')
