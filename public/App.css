@@ -237,6 +237,7 @@ footer p a:hover {
 }
 
 .modal-inner {
+  font-family: 'Bebas Neue', cursive;
   height: 150px;
   width: 300px;
   background-color: rgba(12, 12, 12, 0.63);
@@ -249,11 +250,13 @@ footer p a:hover {
 }
 
 .modal-inner h1 {
+  font-family: inherit;
   color: white;
   font-weight: bold;
 }
 
 .modal-inner button {
+  font-family: inherit;
   font-size: 25px;
   border: none;
   background-color: rgb(44, 44, 44);
