@@ -127,6 +127,7 @@ export default function PreparingGame({
 
     setBoard(newBoard)
     setIsPlacingShip(false)
+    setHeaderMessage('Pick a ship!')
     if (count === 5) {
       setAllPrepared(true)
       setHeaderMessage('start game!')
