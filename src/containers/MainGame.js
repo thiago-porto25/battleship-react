@@ -111,7 +111,6 @@ export default function MainGame({
 
     if (bool) {
       setHeaderMessage('Player wins!')
-      console.log('weeeee')
     } else {
       setHeaderMessage("Computer's turn")
       setCurrentPlayer('AI')
@@ -141,9 +140,9 @@ export default function MainGame({
                   item === 'water'
                     ? 'white'
                     : item === 'hit'
-                    ? 'red'
+                    ? '#af0000'
                     : item === 'water hit'
-                    ? 'blue'
+                    ? '#00009d'
                     : 'gray'
                 }
                 name="player"
@@ -160,9 +159,9 @@ export default function MainGame({
                 boardId={i}
                 colorCode={
                   item === 'hit'
-                    ? 'red'
+                    ? '#af0000'
                     : item === 'water hit'
-                    ? 'blue'
+                    ? '#00008c'
                     : 'white'
                 }
                 name="AI"
