@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import Square from '../components/Square'
 import Footer from '../components/Footer'
@@ -16,7 +17,7 @@ export default function PreparingGame({
   const [count, setCount] = useState(0)
   const [Axis, setAxis] = useState('X')
 
-  useEffect(() => setHeaderMessage('Pick a Ship!'))
+  useEffect(() => setHeaderMessage('Pick a Ship!'), [])
 
   const handlePrepClick = (target) => {
     if (!isPlacingShip) return
@@ -39,6 +40,16 @@ export default function PreparingGame({
         board[targetId + 1] !== 'water' ||
         (board[targetId + 2] !== 'water' && targetId + 2 <= 99))
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(
+        () =>
+          setHeaderMessage(
+            `Place your ${
+              isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
+            }!`
+          ),
+        1000
+      )
       return
     }
 
@@ -57,6 +68,16 @@ export default function PreparingGame({
         board[targetId + 10] !== 'water' ||
         (board[targetId + 20] !== 'water' && targetId + 20 <= 99))
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(
+        () =>
+          setHeaderMessage(
+            `Place your ${
+              isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
+            }!`
+          ),
+        1000
+      )
       return
     }
 
@@ -75,6 +96,8 @@ export default function PreparingGame({
         targetId === 97 ||
         board[targetId + 4] !== 'water')
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -93,6 +116,8 @@ export default function PreparingGame({
         targetId === 79 ||
         (board[targetId + 40] !== 'water' && targetId + 40 <= 99))
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -114,6 +139,8 @@ export default function PreparingGame({
         targetId === 98 ||
         board[targetId + 3] !== 'water')
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -135,6 +162,8 @@ export default function PreparingGame({
         targetId === 89 ||
         (board[targetId + 30] !== 'water' && targetId + 30 <= 99))
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -153,6 +182,8 @@ export default function PreparingGame({
         targetId === 96 ||
         board[targetId + 5] !== 'water')
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -171,6 +202,8 @@ export default function PreparingGame({
         targetId === 69 ||
         (board[targetId + 50] !== 'water' && targetId + 50 <= 99))
     ) {
+      setHeaderMessage('Not Allowed!')
+      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
       return
     }
 
@@ -250,7 +283,11 @@ export default function PreparingGame({
   const handleShipClick = (target, ship) => {
     if (isPlacingShip) return
     target.classList.toggle('selected')
-    setHeaderMessage(`Place your ${ship}!`)
+    setHeaderMessage(
+      `Place your ${
+        isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
+      }!`
+    )
     setIsPlacingShip(ship)
     setCount((prev) => prev + 1)
     target.disabled = true
