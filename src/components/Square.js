@@ -6,13 +6,15 @@ export default function Square({
   boardId,
   name,
   currentPlayer,
+  isPlacingShip,
 }) {
   const [isMouseIn, setIsMouseIn] = useState(false)
 
   const chooseStyle = () => {
     const prepStyles = {
       backgroundColor: isMouseIn ? 'rgb(210, 210, 210)' : colorCode,
-      pointerEvents: colorCode === 'gray' ? 'none' : '',
+      pointerEvents:
+        colorCode === 'gray' ? 'none' : !isPlacingShip ? 'none' : '',
     }
 
     const playerStyles = {

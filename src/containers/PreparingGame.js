@@ -161,6 +161,7 @@ export default function PreparingGame({
                   onClick={({ target }) => handlePrepClick(target)}
                   colorCode={item === 'water' ? 'white' : 'gray'}
                   name="prep"
+                  isPlacingShip={isPlacingShip}
                 />
               ))}
             </div>
