@@ -147,6 +147,10 @@ export default function PreparingGame({
     setIsMainGame(true)
   }
 
+  const shipButtonsStyle = {
+    pointerEvents: isPlacingShip ? 'none' : allPrepared ? 'none' : '',
+  }
+
   return (
     <>
       <div className="prep-container">
@@ -169,26 +173,31 @@ export default function PreparingGame({
           <div className="prep-ships-container">
             <div className="prep-ships-buttons">
               <button
+                style={shipButtonsStyle}
                 onClick={({ target }) => handleShipClick(target, 'carrier')}
               >
                 Carrier
               </button>
               <button
+                style={shipButtonsStyle}
                 onClick={({ target }) => handleShipClick(target, 'battleship')}
               >
                 Battleship
               </button>
               <button
+                style={shipButtonsStyle}
                 onClick={({ target }) => handleShipClick(target, 'warship')}
               >
                 Warship
               </button>
               <button
+                style={shipButtonsStyle}
                 onClick={({ target }) => handleShipClick(target, 'submarine')}
               >
                 Submarine
               </button>
               <button
+                style={shipButtonsStyle}
                 onClick={({ target }) => handleShipClick(target, 'patrol')}
               >
                 Patrol Boat
