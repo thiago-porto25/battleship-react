@@ -1,8 +1,11 @@
 import React from 'react'
 export default function WinnerModal({ handlePlayAgain }) {
   return (
-    <div>
-      <button onClick={handlePlayAgain}>Play Again</button>
-    </div>
+    <section className="modal">
+      <div className="modal-inner">
+        <h1>Play Again?</h1>
+        <button onClick={handlePlayAgain}>New Game</button>
+      </div>
+    </section>
   )
 }
