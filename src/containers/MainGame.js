@@ -67,7 +67,7 @@ export default function MainGame({
     setIsWinner(bool)
 
     if (bool) {
-      setHeaderMessage('The Computer wins!')
+      setHeaderMessage('Too bad! The Computer wins!')
     } else {
       setHeaderMessage("Player's turn")
       setCurrentPlayer('player')
@@ -110,7 +110,7 @@ export default function MainGame({
     setIsWinner(bool)
 
     if (bool) {
-      setHeaderMessage('Player wins!')
+      setHeaderMessage('Congratulations! Player wins!')
     } else {
       setHeaderMessage("Computer's turn")
       setCurrentPlayer('AI')

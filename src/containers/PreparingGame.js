@@ -15,6 +15,7 @@ export default function PreparingGame({
   const [allPrepared, setAllPrepared] = useState(false)
   const [isPlacingShip, setIsPlacingShip] = useState(false)
   const [count, setCount] = useState(0)
+  const [Axis, setAxis] = useState('X')
 
   const handlePrepClick = (target) => {
     if (!isPlacingShip) return
@@ -23,23 +24,43 @@ export default function PreparingGame({
     const targetId = parseInt(target.getAttribute('data-id'), 10)
 
     if (
-      targetId === 9 ||
-      targetId === 19 ||
-      targetId === 29 ||
-      targetId === 39 ||
-      targetId === 49 ||
-      targetId === 59 ||
-      targetId === 69 ||
-      targetId === 79 ||
-      targetId === 89 ||
-      targetId === 99 ||
-      board[targetId + 1] !== 'water' ||
-      (board[targetId + 2] !== 'water' && targetId + 2 <= 99)
+      Axis === 'X' &&
+      (targetId === 9 ||
+        targetId === 19 ||
+        targetId === 29 ||
+        targetId === 39 ||
+        targetId === 49 ||
+        targetId === 59 ||
+        targetId === 69 ||
+        targetId === 79 ||
+        targetId === 89 ||
+        targetId === 99 ||
+        board[targetId + 1] !== 'water' ||
+        (board[targetId + 2] !== 'water' && targetId + 2 <= 99))
     ) {
       return
     }
 
     if (
+      Axis === 'Y' &&
+      (targetId === 90 ||
+        targetId === 91 ||
+        targetId === 92 ||
+        targetId === 93 ||
+        targetId === 94 ||
+        targetId === 95 ||
+        targetId === 96 ||
+        targetId === 97 ||
+        targetId === 98 ||
+        targetId === 99 ||
+        board[targetId + 10] !== 'water' ||
+        (board[targetId + 20] !== 'water' && targetId + 20 <= 99))
+    ) {
+      return
+    }
+
+    if (
+      Axis === 'X' &&
       (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
       (targetId === 7 ||
         targetId === 17 ||
@@ -57,6 +78,25 @@ export default function PreparingGame({
     }
 
     if (
+      Axis === 'Y' &&
+      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
+      (targetId === 70 ||
+        targetId === 71 ||
+        targetId === 72 ||
+        targetId === 73 ||
+        targetId === 74 ||
+        targetId === 75 ||
+        targetId === 76 ||
+        targetId === 77 ||
+        targetId === 78 ||
+        targetId === 79 ||
+        (board[targetId + 40] !== 'water' && targetId + 40 <= 99))
+    ) {
+      return
+    }
+
+    if (
+      Axis === 'X' &&
       (isPlacingShip === 'warship' ||
         isPlacingShip === 'submarine' ||
         isPlacingShip === 'battleship' ||
@@ -77,6 +117,28 @@ export default function PreparingGame({
     }
 
     if (
+      Axis === 'Y' &&
+      (isPlacingShip === 'warship' ||
+        isPlacingShip === 'submarine' ||
+        isPlacingShip === 'battleship' ||
+        isPlacingShip === 'carrier') &&
+      (targetId === 80 ||
+        targetId === 81 ||
+        targetId === 82 ||
+        targetId === 83 ||
+        targetId === 84 ||
+        targetId === 85 ||
+        targetId === 86 ||
+        targetId === 87 ||
+        targetId === 88 ||
+        targetId === 89 ||
+        (board[targetId + 30] !== 'water' && targetId + 30 <= 99))
+    ) {
+      return
+    }
+
+    if (
+      Axis === 'X' &&
       isPlacingShip === 'carrier' &&
       (targetId === 6 ||
         targetId === 16 ||
@@ -93,33 +155,83 @@ export default function PreparingGame({
       return
     }
 
+    if (
+      Axis === 'Y' &&
+      isPlacingShip === 'carrier' &&
+      (targetId === 60 ||
+        targetId === 61 ||
+        targetId === 62 ||
+        targetId === 63 ||
+        targetId === 64 ||
+        targetId === 65 ||
+        targetId === 66 ||
+        targetId === 67 ||
+        targetId === 68 ||
+        targetId === 69 ||
+        (board[targetId + 50] !== 'water' && targetId + 50 <= 99))
+    ) {
+      return
+    }
+
     const newBoard = board.map((item, i) => {
       if (isPlacingShip === 'carrier') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
-        else if (targetId + 2 === i) return isPlacingShip
-        else if (targetId + 3 === i) return isPlacingShip
-        else if (targetId + 4 === i) return isPlacingShip
+        if (Axis === 'X') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 1 === i) return isPlacingShip
+          else if (targetId + 2 === i) return isPlacingShip
+          else if (targetId + 3 === i) return isPlacingShip
+          else if (targetId + 4 === i) return isPlacingShip
+        } else if (Axis === 'Y') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 10 === i) return isPlacingShip
+          else if (targetId + 20 === i) return isPlacingShip
+          else if (targetId + 30 === i) return isPlacingShip
+          else if (targetId + 40 === i) return isPlacingShip
+        }
       }
       if (isPlacingShip === 'battleship') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
-        else if (targetId + 2 === i) return isPlacingShip
-        else if (targetId + 3 === i) return isPlacingShip
+        if (Axis === 'X') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 1 === i) return isPlacingShip
+          else if (targetId + 2 === i) return isPlacingShip
+          else if (targetId + 3 === i) return isPlacingShip
+        } else if (Axis === 'Y') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 10 === i) return isPlacingShip
+          else if (targetId + 20 === i) return isPlacingShip
+          else if (targetId + 30 === i) return isPlacingShip
+        }
       }
       if (isPlacingShip === 'warship') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
-        else if (targetId + 2 === i) return isPlacingShip
+        if (Axis === 'X') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 1 === i) return isPlacingShip
+          else if (targetId + 2 === i) return isPlacingShip
+        } else if (Axis === 'Y') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 10 === i) return isPlacingShip
+          else if (targetId + 20 === i) return isPlacingShip
+        }
       }
       if (isPlacingShip === 'submarine') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
-        else if (targetId + 2 === i) return isPlacingShip
+        if (Axis === 'X') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 1 === i) return isPlacingShip
+          else if (targetId + 2 === i) return isPlacingShip
+        } else if (Axis === 'Y') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 10 === i) return isPlacingShip
+          else if (targetId + 20 === i) return isPlacingShip
+        }
       }
       if (isPlacingShip === 'patrol') {
-        if (targetId === i) return isPlacingShip
-        else if (targetId + 1 === i) return isPlacingShip
+        if (Axis === 'X') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 1 === i) return isPlacingShip
+        } else if (Axis === 'Y') {
+          if (targetId === i) return isPlacingShip
+          else if (targetId + 10 === i) return isPlacingShip
+        }
       }
       if (item !== 'water') return item
       else return 'water'
@@ -141,6 +253,10 @@ export default function PreparingGame({
     setIsPlacingShip(ship)
     setCount((prev) => prev + 1)
     target.disabled = true
+  }
+
+  const handleAxisChange = () => {
+    setAxis((prev) => (prev === 'X' ? 'Y' : 'X'))
   }
 
   const handleStartGame = () => {
@@ -170,6 +286,11 @@ export default function PreparingGame({
                 />
               ))}
             </div>
+          </div>
+          <div className="prep-ships-axis">
+            <button onClick={handleAxisChange} disabled={!isPlacingShip}>
+              Change to {Axis === 'X' ? 'Y' : 'X'} Axis
+            </button>
           </div>
           <div className="prep-ships-container">
             <div className="prep-ships-buttons">
