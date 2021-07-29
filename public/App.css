@@ -110,7 +110,7 @@ body {
   cursor: pointer;
 }
 
-.prep-start-container button:hover :enabled {
+.prep-start-container button:hover:enabled {
   background-color: rgb(65, 64, 64);
 }
 
