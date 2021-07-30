@@ -319,3 +319,11 @@ footer p a:hover {
 /*//////// media queries ///////////*/
 @media (max-width: 750px) {
 }
+
+/*//////// misc ///////////*/
+.hovered {
+  background-color: rgb(177, 175, 175) !important;
+}
+.not-allowed {
+  background-color: rgb(252, 155, 155) !important;
+}

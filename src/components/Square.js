@@ -7,12 +7,13 @@ export default function Square({
   name,
   currentPlayer,
   isPlacingShip,
+  handleMouseEvent,
 }) {
   const [isMouseIn, setIsMouseIn] = useState(false)
 
   const chooseStyle = () => {
     const prepStyles = {
-      backgroundColor: isMouseIn ? 'rgb(210, 210, 210)' : colorCode,
+      backgroundColor: isMouseIn ? 'rgb(177, 175, 175)' : colorCode,
       pointerEvents:
         colorCode === 'gray' ? 'none' : !isPlacingShip ? 'none' : '',
     }
@@ -23,7 +24,7 @@ export default function Square({
 
     const AIStyles = {
       backgroundColor:
-        isMouseIn && colorCode === 'white' ? 'rgb(210, 210, 210)' : colorCode,
+        isMouseIn && colorCode === 'white' ? 'rgb(177, 175, 175)' : colorCode,
       pointerEvents: currentPlayer === 'AI' ? 'none' : '',
     }
 
@@ -35,8 +36,14 @@ export default function Square({
     <div
       className={`board-square ${name}`}
       style={chooseStyle()}
-      onMouseEnter={() => setIsMouseIn(true)}
-      onMouseLeave={() => setIsMouseIn(false)}
+      onMouseEnter={(e) => {
+        setIsMouseIn(true)
+        handleMouseEvent(e)
+      }}
+      onMouseLeave={(e) => {
+        setIsMouseIn(false)
+        handleMouseEvent(e)
+      }}
       onClick={onClick}
       data-id={boardId}
       disabled={colorCode === 'gray' ? true : false}

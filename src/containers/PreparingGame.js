@@ -19,12 +19,7 @@ export default function PreparingGame({
 
   useEffect(() => setHeaderMessage('Pick a Ship!'), [])
 
-  const handlePrepClick = (target) => {
-    if (!isPlacingShip) return
-    if (target.getAttribute('disabled') === '') return
-
-    const targetId = parseInt(target.getAttribute('data-id'), 10)
-
+  const checkIfInvalidEvent = (targetId) => {
     if (
       Axis === 'X' &&
       (targetId === 9 ||
@@ -40,17 +35,7 @@ export default function PreparingGame({
         board[targetId + 1] !== 'water' ||
         (board[targetId + 2] !== 'water' && targetId + 2 <= 99))
     ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(
-        () =>
-          setHeaderMessage(
-            `Place your ${
-              isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
-            }!`
-          ),
-        1000
-      )
-      return
+      return true
     }
 
     if (
@@ -68,57 +53,7 @@ export default function PreparingGame({
         board[targetId + 10] !== 'water' ||
         (board[targetId + 20] !== 'water' && targetId + 20 <= 99))
     ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(
-        () =>
-          setHeaderMessage(
-            `Place your ${
-              isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
-            }!`
-          ),
-        1000
-      )
-      return
-    }
-
-    if (
-      Axis === 'X' &&
-      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
-      (targetId === 7 ||
-        targetId === 17 ||
-        targetId === 27 ||
-        targetId === 37 ||
-        targetId === 47 ||
-        targetId === 57 ||
-        targetId === 67 ||
-        targetId === 77 ||
-        targetId === 87 ||
-        targetId === 97 ||
-        board[targetId + 4] !== 'water')
-    ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
-      return
-    }
-
-    if (
-      Axis === 'Y' &&
-      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
-      (targetId === 70 ||
-        targetId === 71 ||
-        targetId === 72 ||
-        targetId === 73 ||
-        targetId === 74 ||
-        targetId === 75 ||
-        targetId === 76 ||
-        targetId === 77 ||
-        targetId === 78 ||
-        targetId === 79 ||
-        (board[targetId + 40] !== 'water' && targetId + 40 <= 99))
-    ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
-      return
+      return true
     }
 
     if (
@@ -139,9 +74,7 @@ export default function PreparingGame({
         targetId === 98 ||
         board[targetId + 3] !== 'water')
     ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
-      return
+      return true
     }
 
     if (
@@ -162,9 +95,42 @@ export default function PreparingGame({
         targetId === 89 ||
         (board[targetId + 30] !== 'water' && targetId + 30 <= 99))
     ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
-      return
+      return true
+    }
+    if (
+      Axis === 'X' &&
+      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
+      (targetId === 7 ||
+        targetId === 17 ||
+        targetId === 27 ||
+        targetId === 37 ||
+        targetId === 47 ||
+        targetId === 57 ||
+        targetId === 67 ||
+        targetId === 77 ||
+        targetId === 87 ||
+        targetId === 97 ||
+        board[targetId + 4] !== 'water')
+    ) {
+      return true
+    }
+
+    if (
+      Axis === 'Y' &&
+      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
+      (targetId === 70 ||
+        targetId === 71 ||
+        targetId === 72 ||
+        targetId === 73 ||
+        targetId === 74 ||
+        targetId === 75 ||
+        targetId === 76 ||
+        targetId === 77 ||
+        targetId === 78 ||
+        targetId === 79 ||
+        (board[targetId + 40] !== 'water' && targetId + 40 <= 99))
+    ) {
+      return true
     }
 
     if (
@@ -182,9 +148,7 @@ export default function PreparingGame({
         targetId === 96 ||
         board[targetId + 5] !== 'water')
     ) {
-      setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
-      return
+      return true
     }
 
     if (
@@ -202,8 +166,27 @@ export default function PreparingGame({
         targetId === 69 ||
         (board[targetId + 50] !== 'water' && targetId + 50 <= 99))
     ) {
+      return true
+    } else return false
+  }
+
+  const handlePrepClick = (target) => {
+    if (!isPlacingShip) return
+    if (target.getAttribute('disabled') === '') return
+
+    const targetId = parseInt(target.getAttribute('data-id'), 10)
+
+    if (checkIfInvalidEvent(targetId)) {
       setHeaderMessage('Not Allowed!')
-      setTimeout(() => setHeaderMessage(`Place your ${isPlacingShip}!`), 1000)
+      setTimeout(
+        () =>
+          setHeaderMessage(
+            `Place your ${
+              isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
+            }!`
+          ),
+        1000
+      )
       return
     }
 
@@ -289,6 +272,38 @@ export default function PreparingGame({
     target.disabled = true
   }
 
+  const handleMouseEvent = (e) => {
+    if (!isPlacingShip) return
+
+    const targetId = parseInt(e.target.getAttribute('data-id'), 10)
+    let length
+
+    if (checkIfInvalidEvent(targetId)) {
+      e.target.classList.toggle('not-allowed')
+      return
+    }
+
+    if (isPlacingShip === 'carrier') length = 5
+    else if (isPlacingShip === 'battleship') length = 4
+    else if (isPlacingShip === 'warship') length = 3
+    else if (isPlacingShip === 'submarine') length = 3
+    else if (isPlacingShip === 'patrol') length = 2
+
+    if (Axis === 'X') {
+      for (let i = 1; i < length; i++) {
+        document
+          .querySelector(`[data-id='${targetId + i}']`)
+          .classList.toggle('hovered')
+      }
+    } else if (Axis === 'Y') {
+      for (let i = 10; i < length * 10; i += 10) {
+        document
+          .querySelector(`[data-id='${targetId + i}']`)
+          .classList.toggle('hovered')
+      }
+    }
+  }
+
   const handleAxisChange = () => {
     setAxis((prev) => (prev === 'X' ? 'Y' : 'X'))
   }
@@ -317,6 +332,7 @@ export default function PreparingGame({
                   colorCode={item === 'water' ? 'white' : 'gray'}
                   name="prep"
                   isPlacingShip={isPlacingShip}
+                  handleMouseEvent={handleMouseEvent}
                 />
               ))}
             </div>
