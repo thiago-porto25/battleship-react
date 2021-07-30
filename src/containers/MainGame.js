@@ -28,7 +28,10 @@ export default function MainGame({
     let randId
     while (true) {
       const randomNum = Math.floor(Math.random() * 100)
-      if (humanBoard[randomNum] !== 'hit' || humanBoard !== 'water hit') {
+      if (
+        humanBoard[randomNum] !== 'hit' &&
+        humanBoard[randomNum] !== 'water hit'
+      ) {
         randId = randomNum
         break
       }
@@ -174,7 +177,6 @@ export default function MainGame({
                 name="AI"
                 onClick={({ target }) => {
                   handlePlayerMove(target)
-                  console.log(isWinner)
                 }}
                 currentPlayer={currentPlayer}
               />
