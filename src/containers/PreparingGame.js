@@ -283,11 +283,7 @@ export default function PreparingGame({
   const handleShipClick = (target, ship) => {
     if (isPlacingShip) return
     target.classList.toggle('selected')
-    setHeaderMessage(
-      `Place your ${
-        isPlacingShip === 'patrol' ? 'patrol boat' : isPlacingShip
-      }!`
-    )
+    setHeaderMessage(`Place your ${ship === 'patrol' ? 'patrol boat' : ship}!`)
     setIsPlacingShip(ship)
     setCount((prev) => prev + 1)
     target.disabled = true
@@ -327,7 +323,7 @@ export default function PreparingGame({
           </div>
           <div className="prep-ships-axis">
             <button onClick={handleAxisChange} disabled={!isPlacingShip}>
-              Change to {Axis === 'X' ? 'Y' : 'X'} Axis
+              Current Axis: {Axis}
             </button>
           </div>
           <div className="prep-ships-container">
