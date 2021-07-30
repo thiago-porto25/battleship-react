@@ -38,11 +38,11 @@ export default function Square({
       style={chooseStyle()}
       onMouseEnter={(e) => {
         setIsMouseIn(true)
-        handleMouseEvent(e)
+        if (name === 'prep') handleMouseEvent(e)
       }}
       onMouseLeave={(e) => {
         setIsMouseIn(false)
-        handleMouseEvent(e)
+        if (name === 'prep') handleMouseEvent(e)
       }}
       onClick={onClick}
       data-id={boardId}

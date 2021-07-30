@@ -39,24 +39,6 @@ export default function PreparingGame({
     }
 
     if (
-      Axis === 'Y' &&
-      (targetId === 90 ||
-        targetId === 91 ||
-        targetId === 92 ||
-        targetId === 93 ||
-        targetId === 94 ||
-        targetId === 95 ||
-        targetId === 96 ||
-        targetId === 97 ||
-        targetId === 98 ||
-        targetId === 99 ||
-        board[targetId + 10] !== 'water' ||
-        (board[targetId + 20] !== 'water' && targetId + 20 <= 99))
-    ) {
-      return true
-    }
-
-    if (
       Axis === 'X' &&
       (isPlacingShip === 'warship' ||
         isPlacingShip === 'submarine' ||
@@ -72,7 +54,61 @@ export default function PreparingGame({
         targetId === 78 ||
         targetId === 88 ||
         targetId === 98 ||
-        board[targetId + 3] !== 'water')
+        (board[targetId + 3] !== 'water' && targetId + 3 <= 99))
+    ) {
+      return true
+    }
+
+    if (
+      Axis === 'X' &&
+      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
+      (targetId === 7 ||
+        targetId === 17 ||
+        targetId === 27 ||
+        targetId === 37 ||
+        targetId === 47 ||
+        targetId === 57 ||
+        targetId === 67 ||
+        targetId === 77 ||
+        targetId === 87 ||
+        targetId === 97 ||
+        (board[targetId + 4] !== 'water' && targetId + 4 <= 99))
+    ) {
+      return true
+    }
+
+    if (
+      Axis === 'X' &&
+      isPlacingShip === 'carrier' &&
+      (targetId === 6 ||
+        targetId === 16 ||
+        targetId === 26 ||
+        targetId === 36 ||
+        targetId === 46 ||
+        targetId === 56 ||
+        targetId === 66 ||
+        targetId === 76 ||
+        targetId === 86 ||
+        targetId === 96 ||
+        (board[targetId + 5] !== 'water' && targetId + 5 <= 99))
+    ) {
+      return true
+    }
+
+    if (
+      Axis === 'Y' &&
+      (targetId === 90 ||
+        targetId === 91 ||
+        targetId === 92 ||
+        targetId === 93 ||
+        targetId === 94 ||
+        targetId === 95 ||
+        targetId === 96 ||
+        targetId === 97 ||
+        targetId === 98 ||
+        targetId === 99 ||
+        board[targetId + 10] !== 'water' ||
+        (board[targetId + 20] !== 'water' && targetId + 20 <= 99))
     ) {
       return true
     }
@@ -97,23 +133,6 @@ export default function PreparingGame({
     ) {
       return true
     }
-    if (
-      Axis === 'X' &&
-      (isPlacingShip === 'battleship' || isPlacingShip === 'carrier') &&
-      (targetId === 7 ||
-        targetId === 17 ||
-        targetId === 27 ||
-        targetId === 37 ||
-        targetId === 47 ||
-        targetId === 57 ||
-        targetId === 67 ||
-        targetId === 77 ||
-        targetId === 87 ||
-        targetId === 97 ||
-        board[targetId + 4] !== 'water')
-    ) {
-      return true
-    }
 
     if (
       Axis === 'Y' &&
@@ -129,24 +148,6 @@ export default function PreparingGame({
         targetId === 78 ||
         targetId === 79 ||
         (board[targetId + 40] !== 'water' && targetId + 40 <= 99))
-    ) {
-      return true
-    }
-
-    if (
-      Axis === 'X' &&
-      isPlacingShip === 'carrier' &&
-      (targetId === 6 ||
-        targetId === 16 ||
-        targetId === 26 ||
-        targetId === 36 ||
-        targetId === 46 ||
-        targetId === 56 ||
-        targetId === 66 ||
-        targetId === 76 ||
-        targetId === 86 ||
-        targetId === 96 ||
-        board[targetId + 5] !== 'water')
     ) {
       return true
     }
