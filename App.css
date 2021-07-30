@@ -318,6 +318,19 @@ footer p a:hover {
 
 /*//////// media queries ///////////*/
 @media (max-width: 750px) {
+  footer {
+    display: none;
+  }
+  .prep-board-and-ships {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-board-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /*//////// misc ///////////*/
