@@ -328,17 +328,17 @@ footer p a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 40px;
   }
   .prep-board-container {
     width: 100%;
   }
   .prep-ships-axis {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   .prep-start-container {
-    margin-top: 15px;
+    margin-top: 30px;
     margin-bottom: 15px;
   }
   .prep-ships-buttons {
@@ -355,12 +355,10 @@ footer p a:hover {
     align-items: center;
   }
   .main-AI-container {
-    margin-bottom: 15px !important;
-    margin-top: 10px !important;
+    margin-top: 50px !important;
   }
   .main-player-container {
-    margin-top: 15px !important;
-    margin-bottom: 10px !important;
+    margin-top: 50px !important;
   }
   .main-board.human {
     min-width: 200px;
@@ -406,10 +404,6 @@ footer p a:hover {
   .board-square.AI {
     width: 28px;
     height: 28px;
-  }
-  .main-player-container {
-    margin-top: 25px !important;
-    margin-bottom: 10px !important;
   }
 }
 
