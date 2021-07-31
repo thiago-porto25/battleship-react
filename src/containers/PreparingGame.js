@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Square from '../components/Square'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import MobileDetect from 'mobile-detect'
 
 export default function PreparingGame({
   setIsPreparing,
@@ -16,6 +17,8 @@ export default function PreparingGame({
   const [isPlacingShip, setIsPlacingShip] = useState(false)
   const [count, setCount] = useState(0)
   const [Axis, setAxis] = useState('X')
+
+  const detector = new MobileDetect(window.navigator.userAgent)
 
   useEffect(() => setHeaderMessage('Pick a Ship!'), [])
 
@@ -275,6 +278,7 @@ export default function PreparingGame({
 
   const handleMouseEvent = (e) => {
     if (!isPlacingShip) return
+    if (detector.mobile()) return
 
     const targetId = parseInt(e.target.getAttribute('data-id'), 10)
     let length
