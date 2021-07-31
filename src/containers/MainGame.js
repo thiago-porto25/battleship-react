@@ -139,7 +139,7 @@ export default function MainGame({
     <>
       <Header message={headerMessage} />
       <div className="main-board-container">
-        <div>
+        <div className="main-player-container">
           <header>Player</header>
           <div className="main-board human">
             {humanBoard.map((item, i) => (
@@ -160,7 +160,7 @@ export default function MainGame({
             ))}
           </div>
         </div>
-        <div>
+        <div className="main-AI-container">
           <header>Computer</header>
           <div className="main-board AI">
             {AIBoard.map((item, i) => (
