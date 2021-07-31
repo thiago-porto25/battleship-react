@@ -377,6 +377,10 @@ footer p a:hover {
     width: 32px;
     height: 32px;
   }
+  .modal {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 @media (max-width: 550px) {
@@ -389,6 +393,24 @@ footer p a:hover {
 }
 
 @media (max-width: 400px) {
+  .prep-board-and-ships {
+    margin-top: 40px;
+  }
+  .init-container h1 {
+    font-size: 70px;
+  }
+  .board-square {
+    width: 28px;
+    height: 28px;
+  }
+  .board-square.AI {
+    width: 28px;
+    height: 28px;
+  }
+  .main-player-container {
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+  }
 }
 
 /*//////// misc ///////////*/
